@@ -163,6 +163,8 @@ def get_tlp_categories(tlpconfig) -> OrderedDict:
                 groupitems = config['ids']
                 for groupitem in groupitems:
                     id = groupitem['id']
+                    if id not in tlpconfig:
+                        continue
                     type = groupitem['type']
                     values = groupitem['values']
 
@@ -170,6 +172,8 @@ def get_tlp_categories(tlpconfig) -> OrderedDict:
                     configobjects.append([tlpitem, type, values])
             else:
                 id = config['id']
+                if id not in tlpconfig:
+                    continue
                 transdescription = id + "__ID_DESCRIPTION"
                 type = config['type']
                 values = config['values']
